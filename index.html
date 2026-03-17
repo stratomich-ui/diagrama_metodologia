@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urbanismo · Metodología / Método · UNAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f3f7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 28px;
+        }
+
+        /* Estilo ejecutivo: sobrio, limpio, espaciado preciso */
+        .executive-card {
+            max-width: 1400px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 30px 50px -25px rgba(0, 30, 60, 0.25);
+            padding: 2.4rem 2.6rem;
+            border: 1px solid #e9ecf0;
+        }
+
+        /* Header UNAM (estilo mínimo) con posgrado */
+        .unam-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #002856; /* Azul UNAM */
+            flex-wrap: wrap;
+        }
+        .unam-icon {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .unam-icon .escudo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #002856;
+        }
+        .unam-icon .escudo span {
+            font-weight: 700;
+            font-size: 2rem;
+            margin: 0 2px;
+        }
+        .unam-icon .leyenda {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #6f7d8c;
+            margin-top: 4px;
+            letter-spacing: 1.2px;
+        }
+        .unam-titulo {
+            margin-left: auto;
+            font-size: 1rem;
+            color: #3a5670;
+            background: #edf2f7;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 450;
+            white-space: nowrap;
+        }
+        /* Nuevo: programa de posgrado */
+        .posgrado-titulo {
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #3467a1;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+            border-left: 3px solid #9bb8da;
+            padding-left: 18px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            color: #002856; /* Azul institucional */
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0 0.3rem 0;
+        }
+        .subhead {
+            color: #3c5a7a;
+            font-size: 1.1rem;
+            border-left: 4px solid #9bb8da;
+            padding-left: 20px;
+            margin-bottom: 2.2rem;
+            font-weight: 350;
+        }
+
+        /* Diagrama de flujo - Metodología (filosófica) primero, Método (estrategia) segundo */
+        .flow-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 16px;
+            margin: 2.2rem 0 2rem 0;
+        }
+        .flow-card {
+            flex: 1 1 190px;
+            background: #ffffff;
+            border: 1px solid #dae1e9;
+            border-radius: 22px;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,35,70,0.03);
+            transition: 0.15s ease;
+            border-top: 5px solid #b7c9dd;
+        }
+        .flow-card.metodologia { border-top-color: #002856; }  /* UNAM azul */
+        .flow-card.metodo { border-top-color: #3467a1; }
+        .flow-card.tecnica { border-top-color: #5f8bb3; }
+        .flow-card.herramienta { border-top-color: #8cadd4; }
+
+        .card-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-weight: 600;
+            color: #4b637b;
+            margin-bottom: 0.8rem;
+        }
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 430;
+            line-height: 1.2;
+            margin: 0 0 0.6rem 0;
+            color: #001b38;
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: #2d4b6e;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .connector-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #7c95b0;
+            min-width: 30px;
+            align-self: center;
+        }
+
+        /* Flujo de datos estilo ejecutivo minimal */
+        .dataflow-title {
+            font-weight: 450;
+            font-size: 1.3rem;
+            color: #002856;
+            margin: 2.2rem 0 1.2rem 0;
+            border-top: 2px solid #d6e0e9;
+            padding-top: 1.8rem;
+        }
+        .data-steps {
+            display: flex;
+            flex-wrap: wrap;
+            background: #f5f8fc;
+            border-radius: 80px;
+            padding: 0.4rem;
+            border: 1px solid #dae2ec;
+        }
+        .step {
+            flex: 1 1 150px;
+            text-align: center;
+            padding: 1.1rem 0.3rem;
+            font-weight: 500;
+            color: #1b3d5e;
+            background: transparent;
+            border-radius: 60px;
+            font-size: 0.9rem;
+        }
+        .step.active {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,45,85,0.08);
+            font-weight: 600;
+            color: #002856;
+            border: 1px solid #cdddec;
+        }
+        .step small {
+            display: block;
+            font-weight: 350;
+            font-size: 0.7rem;
+            color: #527699;
+            margin-top: 4px;
+        }
+
+        /* relación minimal */
+        .relation-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            background: #f3f7fb;
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            margin: 1.8rem 0;
+            border: 1px solid #d3e0ec;
+            color: #1d4163;
+            font-size: 0.9rem;
+        }
+        .relation-bar span b {
+            font-weight: 600;
+            color: #002856;
+        }
+
+        /* Área de comentarios estilo sobrio */
+        .comments-section {
+            background: #f7fafd;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #dae1ec;
+            margin: 2rem 0 1.5rem 0;
+        }
+        .comments-title {
+            font-size: 1.2rem;
+            font-weight: 450;
+            color: #002856;
+            margin-bottom: 1.4rem;
+            letter-spacing: 0.2px;
+        }
+        .comments-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .comment-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: white;
+            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #dee8f2;
+        }
+        .comment-item .ref {
+            font-weight: 600;
+            background: #e5edf8;
+            color: #002856;
+            padding: 5px 22px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            min-width: 110px;
+            text-align: center;
+        }
+        .comment-item .text {
+            flex: 1;
+            border: none;
+            background: #f2f8ff;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #00325c;
+            resize: vertical;
+            font-family: inherit;
+            border: 1px solid transparent;
+        }
+        .comment-item .text:focus {
+            outline: none;
+            border-color: #8fb1d3;
+            background: #ffffff;
+        }
+
+        /* Panel ejecutivo de informe */
+        .report-panel {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 1rem 0;
+            border: 1px solid #cedaea;
+            box-shadow: 0 12px 24px -18px rgba(0,45,80,0.2);
+        }
+        .report-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .report-header h2 {
+            margin: 0;
+            font-weight: 450;
+            font-size: 1.5rem;
+            color: #002856;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background: white;
+            border: 1px solid #c1d3e6;
+            color: #1d4a77;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .btn:hover {
+            background: #e7f0fa;
+            border-color: #8cb0d3;
+        }
+        .btn-pdf {
+            background: #002856;
+            border-color: #002856;
+            color: white;
+        }
+        .btn-pdf:hover {
+            background: #103d62;
+        }
+        #reporteContenido {
+            background: #f7fafd;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #d4e2f0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #00203d;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .footnote {
+            margin-top: 2rem;
+            color: #4f6f8f;
+            font-size: 0.8rem;
+            text-align: right;
+            border-top: 1px dashed #c2d3e8;
+            padding-top: 1rem;
+        }
+        hr {
+            border: none;
+            border-top: 1px dotted #bfd3e9;
+            margin: 1.2rem 0;
+        }
+        @media (max-width: 800px) {
+            .flow-row { flex-direction: column; }
+            .connector-arrow { transform: rotate(90deg); }
+            .unam-titulo { margin-left: 0; }
+        }
+    </style>
+
+    <!-- Librerías para PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+<div class="executive-card">
+    <!-- Header con iconografía mínima UNAM + POSGRADO -->
+    <div class="unam-header">
+        <div class="unam-icon">
+            <div class="escudo">
+                <span>U</span> <span>N</span> <span>A</span> <span>M</span>
+            </div>
+            <div class="leyenda">Universidad Nacional Autónoma de México</div>
+        </div>
+        <div class="unam-titulo">Investigación · Metodología</div>
+        <!-- NUEVO: Programa de Posgrado en Urbanismo: Metodología de la Investigación II -->
+        <div class="posgrado-titulo"> Programa de posgrado en urbanismo</div>
+    </div>
+
+    <h1>⚙️ Proceso de investigación</h1>
+    <div class="subhead">
+        Metodología (Enfóque) → Método (Estrategia concreta) → Técnica → Herramienta · Gestión de datos
+    </div>
+
+    <!-- DIAGRAMA CON CONCEPTOS CORREGIDOS: Metodología = filosófica, Método = estrategia -->
+    <div class="flow-row">
+        <!-- METODOLOGÍA (ruta filosófica) -->
+        <div class="flow-card metodologia">
+            <div class="card-label">01 · RUTA ESPISTEMOLÓGICA</div>
+            <div class="card-title">Metodología</div>
+            <div class="card-desc">Hipotético-deductivo, inductivo, dialéctico, fenomenológico…</div>
+        </div>
+        <div class="connector-arrow">→</div>
+
+        <!-- MÉTODO (estrategia concreta) -->
+        <div class="flow-card metodo">
+            <div class="card-label">02 · ESTRATEGIA CONCRETA</div>
+            <div class="card-title">Método</div>
+            <div class="card-desc">Diseño, fases, tipo de estudio, alcance (exploratorio, descriptivo…)</div>
+        </div>
+        <div class="connector-arrow">→</div>
+
+        <!-- TÉCNICA -->
+        <div class="flow-card tecnica">
+            <div class="card-label">03 · ACCIONES OPERATIVAS</div>
+            <div class="card-title">Técnica</div>
+            <div class="card-desc">Procedimientos de recolección/ análisis: encuesta, entrevista, observación</div>
+        </div>
+        <div class="connector-arrow">→</div>
+
+        <!-- HERRAMIENTA -->
+        <div class="flow-card herramienta">
+            <div class="card-label">04 · INSTRUMENTO / SOPORTE</div>
+            <div class="card-title">Herramienta</div>
+            <div class="card-desc">Medio físico/digital: cuestionario, guion, software SIG, checklist</div>
+        </div>
+    </div>
+
+    <!-- FLUJO DE DATOS (estilo ejecutivo) -->
+    <div class="dataflow-title"> Ciclo del dato: obtención → tratamiento</div>
+    <div class="data-steps">
+        <div class="step active">🔍 Recolección<br><small>técnicas + herramientas</small></div>
+        <div class="step">🧹 Depuración<br><small>control calidad</small></div>
+        <div class="step">📊 Procesamiento<br><small>orden/codificación</small></div>
+        <div class="step">📈 Análisis<br><small>estadístico/cualitativo</small></div>
+        <div class="step">📎 Síntesis<br><small>resultados</small></div>
+    </div>
+
+    <!-- BARRA DE RELACIÓN CONCEPTUAL (actualizada) -->
+    <div class="relation-bar">
+        <span><b>Metodología:</b> ruta epistemológica</span>
+        <span><b>Método:</b> estrategia concreta</span>
+        <span><b>Técnica:</b> acciones operativas</span>
+        <span><b>Herramienta:</b> instrumento/soporte</span>
+    </div>
+
+    <!-- COMENTARIOS EDITABLES (orden correcto) -->
+    <div class="comments-section">
+        <div class="comments-title">📝 Notas del proyecto (campos editables) · Posgrado Urbanismo</div>
+        <div class="comments-grid">
+            <!-- METODOLOGÍA: ruta filosófica -->
+            <div class="comment-item">
+                <div class="ref">Metodología</div>
+                <textarea class="text" id="metodologiaText" placeholder="Enfoque filosófico...">Se adopta una metodología hipotético-deductiva, combinada con elementos fenomenológicos para comprender la percepción del espacio urbano.</textarea>
+            </div>
+            <!-- MÉTODO: estrategia concreta -->
+            <div class="comment-item">
+                <div class="ref">Método</div>
+                <textarea class="text" id="metodoText" placeholder="Diseño, fases, tipo de estudio...">Investigación mixta con fase exploratoria (mapeo de conflictos) y fase descriptiva (análisis morfológico). Diseño transversal.</textarea>
+            </div>
+            <!-- TÉCNICA -->
+            <div class="comment-item">
+                <div class="ref">Técnica</div>
+                <textarea class="text" id="tecnicaText" placeholder="Técnicas concretas...">Observación sistemática de flujos peatonales, entrevistas semiestructuradas a residentes y encuesta de percepción.</textarea>
+            </div>
+            <!-- HERRAMIENTA -->
+            <div class="comment-item">
+                <div class="ref">Herramienta</div>
+                <textarea class="text" id="herramientaText" placeholder="Instrumentos específicos...">Fichas de observación, guion de entrevista, cuestionario digital (Google Forms), QGIS para análisis espacial.</textarea>
+            </div>
+            <!-- TRATAMIENTO DATOS -->
+            <div class="comment-item">
+                <div class="ref">Tratamiento datos</div>
+                <textarea class="text" id="tratamientoText" placeholder="Limpieza, transformación...">Codificación de entrevistas con Atlas.ti, normalización de escalas Likert, análisis SIG de capas de uso de suelo.</textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL DE INFORME CON BOTONES DE EXPORTACIÓN -->
+    <div class="report-panel">
+        <div class="report-header">
+            <h2> Informe · Posgrado Urbanismo</h2>
+            <div class="button-group">
+                <button class="btn" id="actualizarInformeBtn">↻ Actualizar</button>
+                <button class="btn" id="exportarTxtBtn">📄 .txt</button>
+                <button class="btn btn-pdf" id="exportarPdfBtn">📑 PDF</button>
+            </div>
+        </div>
+        <div id="reporteContenido" class="report-placeholder">
+            (Los comentarios aparecerán estructurados. Pulse "Actualizar" para generar el informe.)
+        </div>
+        <div style="margin-top: 16px; font-size:0.85rem; color:#336391; display: flex; gap: 12px;">
+            <span> El informe sigue el orden: Metodología (epistemología) → Método (estrategia) → Técnica → Herramienta → Tratamiento.</span>
+        </div>
+    </div>
+
+    <!-- Línea divisoria -->
+    <hr>
+    <div style="display: flex; justify-content: space-between; color: #527399; font-size: 0.85rem;">
+        <div>UNAM · Programa de posgrado en urbanismo</div>
+        <div>Diagrama  · v.1</div>
+    </div>
+    <div class="footnote">
+         Metodología de la investigación II.
+    </div>
+</div>
+
+<!-- SCRIPT: generación de informe y exportación (con orden Metodología→Método) -->
+<script>
+    (function() {
+        function generarInforme() {
+            const metodologia = document.getElementById('metodologiaText');
+            const metodo = document.getElementById('metodoText');
+            const tecnica = document.getElementById('tecnicaText');
+            const herramienta = document.getElementById('herramientaText');
+            const tratamiento = document.getElementById('tratamientoText');
+
+            const metodologiaVal = metodologia ? metodologia.value.trim() : '';
+            const metodoVal = metodo ? metodo.value.trim() : '';
+            const tecnicaVal = tecnica ? tecnica.value.trim() : '';
+            const herramientaVal = herramienta ? herramienta.value.trim() : '';
+            const tratamientoVal = tratamiento ? tratamiento.value.trim() : '';
+
+            let informe = '';
+            informe += 'INFORME DE INVESTIGACIÓN · PROGRAMA DE POSGRADO EN URBANISMO (UNAM)\n';
+            informe += '═══════════════════════════════════════════════════════════════════\n\n';
+            informe += '🔶 METODOLOGÍA (ruta filosófica):\n   ' + (metodologiaVal || '(No especificado)') + '\n\n';
+            informe += '🔷 MÉTODO (estrategia concreta):\n   ' + (metodoVal || '(No especificado)') + '\n\n';
+            informe += '🔶 TÉCNICA(S):\n   ' + (tecnicaVal || '(No especificado)') + '\n\n';
+            informe += '🔷 HERRAMIENTA(S):\n   ' + (herramientaVal || '(No especificado)') + '\n\n';
+            informe += '🔶 TRATAMIENTO DE DATOS:\n   ' + (tratamientoVal || '(No especificado)') + '\n\n';
+            informe += '───────────────────────────────────────────\n';
+            informe += '📎 Flujo resumen: obtención → depuración → procesamiento → análisis → síntesis.';
+
+            return informe;
+        }
+
+        function mostrarInforme() {
+            const reporteDiv = document.getElementById('reporteContenido');
+            if (reporteDiv) {
+                reporteDiv.textContent = generarInforme();
+                reporteDiv.classList.remove('report-placeholder');
+            }
+        }
+
+        function exportarTxt() {
+            const contenido = generarInforme();
+            const blob = new Blob([contenido], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'informe_urbanismo_UNAM.txt';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        function exportarPdf() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            doc.setFontSize(16);
+            doc.text('Programa de posgrado en urbanismo · UNAM', 20, 20);
+            doc.setFontSize(14);
+            doc.text('Informe de investigación', 20, 30);
+            
+            const metodologia = document.getElementById('metodologiaText')?.value.trim() || 'No especificado';
+            const metodo = document.getElementById('metodoText')?.value.trim() || 'No especificado';
+            const tecnica = document.getElementById('tecnicaText')?.value.trim() || 'No especificado';
+            const herramienta = document.getElementById('herramientaText')?.value.trim() || 'No especificado';
+            const tratamiento = document.getElementById('tratamientoText')?.value.trim() || 'No especificado';
+
+            const body = [
+                ['Metodología (filosofía)', metodologia],
+                ['Método (estrategia)', metodo],
+                ['Técnica', tecnica],
+                ['Herramienta', herramienta],
+                ['Tratamiento de datos', tratamiento]
+            ];
+
+            doc.autoTable({
+                startY: 40,
+                head: [['Concepto', 'Descripción']],
+                body: body,
+                styles: { fontSize: 9, cellPadding: 4 },
+                headStyles: { fillColor: [0, 40, 86] }, // UNAM azul
+                columnStyles: { 0: { fontStyle: 'bold', cellWidth: 45 }, 1: { cellWidth: 135 } },
+                margin: { left: 20, right: 20 }
+            });
+
+            const finalY = doc.lastAutoTable.finalY + 10;
+            doc.setFontSize(9);
+            doc.text('Flujo resumen: obtención → depuración → procesamiento → análisis → síntesis.', 20, finalY);
+            doc.text('UNAM · Posgrado en Urbanismo', 20, finalY + 7);
+            
+            doc.save('informe_urbanismo_UNAM.pdf');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('actualizarInformeBtn')?.addEventListener('click', mostrarInforme);
+            document.getElementById('exportarTxtBtn')?.addEventListener('click', exportarTxt);
+            document.getElementById('exportarPdfBtn')?.addEventListener('click', exportarPdf);
+            mostrarInforme(); // inicial
+        });
+    })();
+</script>
+</body>
+</html>
