@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urbanismo · Metodología / Método · UNAM</title>
+    <title>Urbanismo · Metodología · UNAM</title>
     <style>
         * {
             margin: 0;
@@ -75,7 +75,7 @@
             font-weight: 450;
             white-space: nowrap;
         }
-        /* Nuevo: programa de posgrado */
+        /* Programa de posgrado */
         .posgrado-titulo {
             width: 100%;
             font-size: 1.2rem;
@@ -90,7 +90,7 @@
         h1 {
             font-size: 2.2rem;
             font-weight: 450;
-            color: #002856; /* Azul institucional */
+            color: #002856;
             letter-spacing: -0.02em;
             margin: 0.5rem 0 0.3rem 0;
         }
@@ -103,7 +103,47 @@
             font-weight: 350;
         }
 
-        /* Diagrama de flujo - Metodología (filosófica) primero, Método (estrategia) segundo */
+        /* NUEVO: Panel de datos del proyecto */
+        .project-data {
+            background: #f3f8ff;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #cbdaea;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-end;
+        }
+        .data-field {
+            flex: 1 1 220px;
+        }
+        .data-field label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #3467a1;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .data-field input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #c1d5ea;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.1s;
+            font-family: inherit;
+        }
+        .data-field input:focus {
+            outline: none;
+            border-color: #002856;
+            box-shadow: 0 0 0 2px rgba(0,40,86,0.1);
+        }
+
+        /* Diagrama de flujo */
         .flow-row {
             display: flex;
             flex-wrap: wrap;
@@ -122,7 +162,7 @@
             transition: 0.15s ease;
             border-top: 5px solid #b7c9dd;
         }
-        .flow-card.metodologia { border-top-color: #002856; }  /* UNAM azul */
+        .flow-card.metodologia { border-top-color: #002856; }
         .flow-card.metodo { border-top-color: #3467a1; }
         .flow-card.tecnica { border-top-color: #5f8bb3; }
         .flow-card.herramienta { border-top-color: #8cadd4; }
@@ -156,7 +196,7 @@
             align-self: center;
         }
 
-        /* Flujo de datos estilo ejecutivo minimal */
+        /* Flujo de datos */
         .dataflow-title {
             font-weight: 450;
             font-size: 1.3rem;
@@ -198,7 +238,7 @@
             margin-top: 4px;
         }
 
-        /* relación minimal */
+        /* Barra de relación */
         .relation-bar {
             display: flex;
             flex-wrap: wrap;
@@ -216,7 +256,7 @@
             color: #002856;
         }
 
-        /* Área de comentarios estilo sobrio */
+        /* Área de comentarios */
         .comments-section {
             background: #f7fafd;
             border-radius: 24px;
@@ -273,7 +313,7 @@
             background: #ffffff;
         }
 
-        /* Panel ejecutivo de informe */
+        /* Panel de informe */
         .report-panel {
             background: #ffffff;
             border-radius: 24px;
@@ -333,7 +373,7 @@
             line-height: 1.6;
             color: #00203d;
             white-space: pre-wrap;
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
         }
         .footnote {
@@ -362,7 +402,7 @@
 </head>
 <body>
 <div class="executive-card">
-    <!-- Header con iconografía mínima UNAM + POSGRADO -->
+    <!-- Header UNAM -->
     <div class="unam-header">
         <div class="unam-icon">
             <div class="escudo">
@@ -370,21 +410,36 @@
             </div>
             <div class="leyenda">Universidad Nacional Autónoma de México</div>
         </div>
-        <div class="unam-titulo">Investigación · Metodología</div>
-        <!-- NUEVO: Programa de Posgrado en Urbanismo: Metodología de la Investigación II -->
-        <div class="posgrado-titulo"> Programa de posgrado en urbanismo</div>
+        <div class="unam-titulo">Actividad Semestral</div>
+        <div class="posgrado-titulo"> Programa de Posgrado en Urbanismo: Seminario de Metodología II</div>
     </div>
 
     <h1>⚙️ Proceso de investigación</h1>
     <div class="subhead">
-        Metodología (Enfóque) → Método (Estrategia concreta) → Técnica → Herramienta · Gestión de datos
+        Metodología (ruta epistemológica) → Método (estrategia concreta) → Técnica → Herramienta · Flujo de datos
     </div>
 
-    <!-- DIAGRAMA CON CONCEPTOS CORREGIDOS: Metodología = filosófica, Método = estrategia -->
+    <!-- NUEVO: Panel de datos del proyecto -->
+    <div class="project-data">
+        <div class="data-field">
+            <label> Nombre del investigador</label>
+        <input type="text" id="nombreInput" placeholder="Ej: Juan Pérez García" value="Nombre completo">
+        </div>
+        <div class="data-field">
+            <label> Título del proyecto</label>
+            <input type="text" id="tituloInput" placeholder="Ej: Movilidad urbana en el centro histórico" value="Título del proyecto">
+        </div>
+        <div class="data-field">
+            <label> Línea de investigación</label>
+            <input type="text" id="lineaInput" placeholder="Ej: Estudios urbano-ambientales" value="Línea de investigación">
+        </div>
+    </div>
+
+    <!-- Diagrama de flujo -->
     <div class="flow-row">
         <!-- METODOLOGÍA (ruta filosófica) -->
         <div class="flow-card metodologia">
-            <div class="card-label">01 · RUTA ESPISTEMOLÓGICA</div>
+            <div class="card-label">01 · RUTA EPISTEMOLÓGICA</div>
             <div class="card-title">Metodología</div>
             <div class="card-desc">Hipotético-deductivo, inductivo, dialéctico, fenomenológico…</div>
         </div>
@@ -414,17 +469,17 @@
         </div>
     </div>
 
-    <!-- FLUJO DE DATOS (estilo ejecutivo) -->
+    <!-- FLUJO DE DATOS -->
     <div class="dataflow-title"> Ciclo del dato: obtención → tratamiento</div>
     <div class="data-steps">
-        <div class="step active">🔍 Recolección<br><small>técnicas + herramientas</small></div>
-        <div class="step">🧹 Depuración<br><small>control calidad</small></div>
+        <div class="step active"> Recolección<br><small>técnicas + herramientas</small></div>
+        <div class="step">📇 Depuración<br><small>control calidad</small></div>
         <div class="step">📊 Procesamiento<br><small>orden/codificación</small></div>
         <div class="step">📈 Análisis<br><small>estadístico/cualitativo</small></div>
         <div class="step">📎 Síntesis<br><small>resultados</small></div>
     </div>
 
-    <!-- BARRA DE RELACIÓN CONCEPTUAL (actualizada) -->
+    <!-- BARRA DE RELACIÓN CONCEPTUAL -->
     <div class="relation-bar">
         <span><b>Metodología:</b> ruta epistemológica</span>
         <span><b>Método:</b> estrategia concreta</span>
@@ -432,39 +487,39 @@
         <span><b>Herramienta:</b> instrumento/soporte</span>
     </div>
 
-    <!-- COMENTARIOS EDITABLES (orden correcto) -->
+    <!-- COMENTARIOS EDITABLES -->
     <div class="comments-section">
-        <div class="comments-title">📝 Notas del proyecto (campos editables) · Posgrado Urbanismo</div>
+        <div class="comments-title"> Informe del proyecto (Estructura metodológica)· Posgrado Urbanismo: Seminario de Investigación II</div>
         <div class="comments-grid">
-            <!-- METODOLOGÍA: ruta filosófica -->
+            <!-- METODOLOGÍA -->
             <div class="comment-item">
                 <div class="ref">Metodología</div>
                 <textarea class="text" id="metodologiaText" placeholder="Enfoque filosófico...">Se adopta una metodología hipotético-deductiva, combinada con elementos fenomenológicos para comprender la percepción del espacio urbano.</textarea>
             </div>
-            <!-- MÉTODO: estrategia concreta -->
+            <!-- MÉTODO -->
             <div class="comment-item">
                 <div class="ref">Método</div>
-                <textarea class="text" id="metodoText" placeholder="Diseño, fases, tipo de estudio...">Investigación mixta con fase exploratoria (mapeo de conflictos) y fase descriptiva (análisis morfológico). Diseño transversal.</textarea>
+                <textarea class="text" id="metodoText" placeholder="Diseño, fases, tipo de estudio...">Investigación cuantitativa con fase exploratoria (selección de variables y unidades de investigación) y fase descriptiva (análisis estadístico exploratorio). Diseño transversal.</textarea>
             </div>
             <!-- TÉCNICA -->
             <div class="comment-item">
                 <div class="ref">Técnica</div>
-                <textarea class="text" id="tecnicaText" placeholder="Técnicas concretas...">Observación sistemática de flujos peatonales, entrevistas semiestructuradas a residentes y encuesta de percepción.</textarea>
+                <textarea class="text" id="tecnicaText" placeholder="Técnicas concretas...">Observación de datos, pruebas espaciales, rangos, tasas, tendencias de fuentes censales, encuestas u observaciones a partir de entrevistas.</textarea>
             </div>
             <!-- HERRAMIENTA -->
             <div class="comment-item">
                 <div class="ref">Herramienta</div>
-                <textarea class="text" id="herramientaText" placeholder="Instrumentos específicos...">Fichas de observación, guion de entrevista, cuestionario digital (Google Forms), QGIS para análisis espacial.</textarea>
+                <textarea class="text" id="herramientaText" placeholder="Instrumentos específicos...">Fichas de observación, datos en excel formato csv u otros, análisis por medio de SPSS, RStudio, Python, cuestionario digital (Google Forms), QGIS para análisis espacial.</textarea>
             </div>
             <!-- TRATAMIENTO DATOS -->
             <div class="comment-item">
                 <div class="ref">Tratamiento datos</div>
-                <textarea class="text" id="tratamientoText" placeholder="Limpieza, transformación...">Codificación de entrevistas con Atlas.ti, normalización de escalas Likert, análisis SIG de capas de uso de suelo.</textarea>
+                <textarea class="text" id="tratamientoText" placeholder="Limpieza, transformación..."> Cálculo de tasas, clasificaciones, análisis SIG de capas de uso de suelo.</textarea>
             </div>
         </div>
     </div>
 
-    <!-- PANEL DE INFORME CON BOTONES DE EXPORTACIÓN -->
+    <!-- PANEL DE INFORME CON BOTONES -->
     <div class="report-panel">
         <div class="report-header">
             <h2> Informe · Posgrado Urbanismo</h2>
@@ -475,48 +530,55 @@
             </div>
         </div>
         <div id="reporteContenido" class="report-placeholder">
-            (Los comentarios aparecerán estructurados. Pulse "Actualizar" para generar el informe.)
+            (Los datos del proyecto y comentarios aparecerán aquí. Pulse "Actualizar".)
         </div>
-        <div style="margin-top: 16px; font-size:0.85rem; color:#336391; display: flex; gap: 12px;">
-            <span> El informe sigue el orden: Metodología (epistemología) → Método (estrategia) → Técnica → Herramienta → Tratamiento.</span>
+        <div style="margin-top: 16px; font-size:0.85rem; color:#336391;">
+             Informe del seminario en metodología de la investigación II.
         </div>
     </div>
 
-    <!-- Línea divisoria -->
     <hr>
     <div style="display: flex; justify-content: space-between; color: #527399; font-size: 0.85rem;">
         <div>UNAM · Programa de posgrado en urbanismo</div>
-        <div>Diagrama  · v.1</div>
+        <div>Diagrama · v.1</div>
     </div>
     <div class="footnote">
-         Metodología de la investigación II.
+        Docente: Dr. Michelle López Nicolás.
     </div>
 </div>
 
-<!-- SCRIPT: generación de informe y exportación (con orden Metodología→Método) -->
+<!-- SCRIPT: generación de informe y exportación -->
 <script>
     (function() {
         function generarInforme() {
-            const metodologia = document.getElementById('metodologiaText');
-            const metodo = document.getElementById('metodoText');
-            const tecnica = document.getElementById('tecnicaText');
-            const herramienta = document.getElementById('herramientaText');
-            const tratamiento = document.getElementById('tratamientoText');
+            // Datos del proyecto
+            const nombre = document.getElementById('nombreInput')?.value.trim() || '';
+            const titulo = document.getElementById('tituloInput')?.value.trim() || '';
+            const linea = document.getElementById('lineaInput')?.value.trim() || '';
 
-            const metodologiaVal = metodologia ? metodologia.value.trim() : '';
-            const metodoVal = metodo ? metodo.value.trim() : '';
-            const tecnicaVal = tecnica ? tecnica.value.trim() : '';
-            const herramientaVal = herramienta ? herramienta.value.trim() : '';
-            const tratamientoVal = tratamiento ? tratamiento.value.trim() : '';
+            // Campos metodológicos
+            const metodologia = document.getElementById('metodologiaText')?.value.trim() || '';
+            const metodo = document.getElementById('metodoText')?.value.trim() || '';
+            const tecnica = document.getElementById('tecnicaText')?.value.trim() || '';
+            const herramienta = document.getElementById('herramientaText')?.value.trim() || '';
+            const tratamiento = document.getElementById('tratamientoText')?.value.trim() || '';
 
             let informe = '';
             informe += 'INFORME DE INVESTIGACIÓN · PROGRAMA DE POSGRADO EN URBANISMO (UNAM)\n';
             informe += '═══════════════════════════════════════════════════════════════════\n\n';
-            informe += '🔶 METODOLOGÍA (ruta filosófica):\n   ' + (metodologiaVal || '(No especificado)') + '\n\n';
-            informe += '🔷 MÉTODO (estrategia concreta):\n   ' + (metodoVal || '(No especificado)') + '\n\n';
-            informe += '🔶 TÉCNICA(S):\n   ' + (tecnicaVal || '(No especificado)') + '\n\n';
-            informe += '🔷 HERRAMIENTA(S):\n   ' + (herramientaVal || '(No especificado)') + '\n\n';
-            informe += '🔶 TRATAMIENTO DE DATOS:\n   ' + (tratamientoVal || '(No especificado)') + '\n\n';
+            
+            // Datos del proyecto
+            informe += ' INVESTIGADOR:\n   ' + (nombre || '(No especificado)') + '\n\n';
+            informe += ' TÍTULO DEL PROYECTO:\n   ' + (titulo || '(No especificado)') + '\n\n';
+            informe += ' LÍNEA DE INVESTIGACIÓN:\n   ' + (linea || '(No especificado)') + '\n\n';
+            informe += '───────────────────────────────────────────\n\n';
+            
+            // Metodología
+            informe += '🔶 METODOLOGÍA (ruta filosófica):\n   ' + (metodologia || '(No especificado)') + '\n\n';
+            informe += '🔷 MÉTODO (estrategia concreta):\n   ' + (metodo || '(No especificado)') + '\n\n';
+            informe += '🔶 TÉCNICA(S):\n   ' + (tecnica || '(No especificado)') + '\n\n';
+            informe += '🔷 HERRAMIENTA(S):\n   ' + (herramienta || '(No especificado)') + '\n\n';
+            informe += '🔶 TRATAMIENTO DE DATOS:\n   ' + (tratamiento || '(No especificado)') + '\n\n';
             informe += '───────────────────────────────────────────\n';
             informe += '📎 Flujo resumen: obtención → depuración → procesamiento → análisis → síntesis.';
 
@@ -550,6 +612,10 @@
             doc.setFontSize(14);
             doc.text('Informe de investigación', 20, 30);
             
+            // Obtener valores
+            const nombre = document.getElementById('nombreInput')?.value.trim() || 'No especificado';
+            const titulo = document.getElementById('tituloInput')?.value.trim() || 'No especificado';
+            const linea = document.getElementById('lineaInput')?.value.trim() || 'No especificado';
             const metodologia = document.getElementById('metodologiaText')?.value.trim() || 'No especificado';
             const metodo = document.getElementById('metodoText')?.value.trim() || 'No especificado';
             const tecnica = document.getElementById('tecnicaText')?.value.trim() || 'No especificado';
@@ -557,6 +623,9 @@
             const tratamiento = document.getElementById('tratamientoText')?.value.trim() || 'No especificado';
 
             const body = [
+                ['Investigador', nombre],
+                ['Título del proyecto', titulo],
+                ['Línea de investigación', linea],
                 ['Metodología (filosofía)', metodologia],
                 ['Método (estrategia)', metodo],
                 ['Técnica', tecnica],
@@ -569,7 +638,7 @@
                 head: [['Concepto', 'Descripción']],
                 body: body,
                 styles: { fontSize: 9, cellPadding: 4 },
-                headStyles: { fillColor: [0, 40, 86] }, // UNAM azul
+                headStyles: { fillColor: [0, 40, 86] },
                 columnStyles: { 0: { fontStyle: 'bold', cellWidth: 45 }, 1: { cellWidth: 135 } },
                 margin: { left: 20, right: 20 }
             });
